@@ -51,15 +51,22 @@ class Solution
     {
         // code here 
         
-        int right = n-1;
         
-        int left = 0;
+        // Arr1: 1 3 5 7
+        // Arr2: 0 2 6 8 9
+        // Start from end of arr1, towards left and start of arr2, towards right.
+        // If arr1[right] > arr2[left] -> it means that bigger number is contained in arr1, which shouldn't be. So, we swap
+        // If arr1[right] <= arr2[left] -> it means that smaller number is already in arr1, which is where it should be. So, don't even check for this case.
+        // In the end, sort the haphazardically arranged items coming after swapping in their right place for both the arrays.
+        
+        int right = n-1;    // end of arr1
+        int left = 0;       // start of arr2
         
         while(right >= 0 && left < m){
                 
             if(arr1[right] > arr2[left]){
                 
-                //swap the right element of first array and left elemengt of second array: 
+                //swap the right element of first array and left element of second array: 
                 long x = arr1[right];
                 arr1[right] = arr2[left];
                 arr2[left] = x;
@@ -69,11 +76,9 @@ class Solution
             }
             else 
                 break;
-        
         }
             
         Arrays.sort(arr1);
         Arrays.sort(arr2);
-        
     }
 }
