@@ -70,12 +70,9 @@ class Solution
 	   
 	   if(N==0) return N;
 	   
-	   
 	   Set <Integer> set = new HashSet<>();
 	   
-	   for(int el : arr){
-	       set.add(el);
-	   }
+	   for(int x : arr) set.add(x); //add all elements of the array to the set
 	   
 	   int longest = 1;
 	   
@@ -84,11 +81,11 @@ class Solution
 	       if(!set.contains(it-1)){
 	           
 	           int cnt = 1;
-	           int x = it;
+	           int next = it+1;
 	           
-	           while(set.contains(x+1)){
+	           while(set.contains(next)){
 	               cnt++;
-	               x++;
+	               next++;
 	           }
 	           
 	           longest = Math.max(cnt, longest);
