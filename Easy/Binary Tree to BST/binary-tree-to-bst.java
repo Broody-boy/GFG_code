@@ -120,43 +120,40 @@ class Solution
     // The given root is the root of the Binary Tree
     // Return the root of the generated BST
     
-    List<Integer> elements = new ArrayList<>();
+
     int i = 0;
-    
+
     Node binaryTreeToBST(Node root)
     {
        // Your code here
       
-       traverseTree(root);
+        ArrayList<Integer> elements = new ArrayList<>();
+      
+        traverseTree(root, elements);
+        Collections.sort(elements);
+        inorderForBST(root, elements);
        
-       Collections.sort(elements);
-       
-       inorderForBST(root);
-       
-       return root;
+        return root;
     }
     
     
-    void traverseTree(Node node){
-        
+    void traverseTree(Node node, ArrayList<Integer> elements){
         if(node == null)
             return;
-        
-        traverseTree(node.left);
+            
+        traverseTree(node.left, elements);
         elements.add(node.data);
-        traverseTree(node.right);
+        traverseTree(node.right, elements);
         
     }
     
-    void inorderForBST(Node node){
+    void inorderForBST(Node node, ArrayList<Integer> elements){
         if(node == null)
             return;
-        
-        inorderForBST(node.left);
-        
+            
+        inorderForBST(node.left, elements);
         node.data = elements.get(i++);
-        
-        inorderForBST(node.right);
+        inorderForBST(node.right, elements);
     }
 }
  
