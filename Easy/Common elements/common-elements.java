@@ -72,9 +72,9 @@ class Solution
         
         while(i < n1 && j < n2 && k < n3){
             
-            if(A[i] == B[j] && B[j] == C[k]){
+            if(A[i] == B[j] && B[j] == C[k]){           //equal values(which is our case of concern)
                 
-                if(check == A[i]){
+                if(check == A[i]){                      //check is for handling duplicate values
                     //do nothing, just let it pass
                 }
                 else{
@@ -92,7 +92,7 @@ class Solution
             
             int min = min(A[i], B[j], C[k]);
             
-            if(min == A[i])
+            if(min == A[i])                 //Basically, our aim here is to equalise all the values at index i,j,k so that they point to the same number.
                 i++;
             else if(min == B[j])
                 j++;
